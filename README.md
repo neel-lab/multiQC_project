@@ -1,15 +1,14 @@
 <h1> multiqc </h1>
-<p></p>multiqc.py enables NGS file analysis (i.e. fastqc and multiqc) in python environment for windows client.</p>
-
-<p>To install follow the Windows + WSL setup notes (run once):</p>
-<p>In Windows CMD (Admin), install wsl at Power Shell prompt:</p>
-<p> wsl --install</p>
-<p>Install Ubuntu, from “Microsoft Store” in start menu. Just look for ubuntu, rather than any specific version.</p>
-<p>Reboot, open Ubuntu (WSL) terminal, then install STAR and FASTQC:</p>
-<p>  sudo apt update</p>
-<p>  sudo apt install rna-star fastqc</p>
-
-<p>(Optional) Build STAR index (example; quote paths with spaces):</p>p>
+multiqc.py enables NGS file analysis (i.e. fastqc and multiqc) in python environment for windows client.<br />
+To install follow the Windows + WSL setup notes (run once):<br />
+In Windows CMD (Admin), install wsl at Power Shell prompt:<br />
+   wsl --install<br />
+   Install Ubuntu, from “Microsoft Store” in start menu. Just look for ubuntu, rather than any specific version.<br />
+Reboot, open Ubuntu (WSL) terminal, then install STAR and FASTQC:br />
+  sudo apt update<br />
+  sudo apt install rna-star fastqc<br />
+<p> </p>
+(Optional) Build STAR index (example; quote paths with spaces):<br />
   STAR --runMode genomeGenerate \<br />
     --genomeDir "/mnt/c/Users/neel/Box/My programs/Python/scglyco/data/star_transcriptome_index" \<br />
     --genomeFastaFiles "/mnt/c/Users/neel/Box/My programs/Python/scglyco/data/gencode_v47_transcripts.fasta" \<br />
