@@ -1,9 +1,9 @@
 <h1> multiqc </h1>
-multiqc.py enables NGS file analysis (i.e. fastqc and multiqc) in python environment for windows client.<br />
+<p></p>multiqc.py enables NGS file analysis (i.e. fastqc and multiqc) in python environment for windows client.</p>
 To install follow the Windows + WSL setup notes (run once):<br />
 In Windows CMD (Admin), install wsl at Power Shell prompt:<br />
    wsl --install<br />
-   Install Ubuntu, from “Microsoft Store” in start menu. Just look for ubuntu, rather than any specific version.<br />
+   <p>Install Ubuntu, from “Microsoft Store” in start menu. Just look for ubuntu, rather than any specific version.</p>
 Reboot, open Ubuntu (WSL) terminal, then install STAR and FASTQC:br />
   sudo apt update<br />
   sudo apt install rna-star fastqc<br />
