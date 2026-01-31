@@ -19,6 +19,7 @@ pip install multiqc<br />
 <p> </p>
 The function runs fastqc or rna-star in linux/ubuntu environment, and then uses mutiqc to integrate all the results.<br />
 The main function runs multiqc on data files after either fastqc or rna-star analysis:<br />
+<p> </p>
 The main command is:<br />
 process_sample_groups_from_csv(base_dir, csv_path, output_base_dir, star_index, run_alignment_flag, run_fastqc_flag, threads_fastqc=4,  threads_star=8)<br  />
 where:<br />
