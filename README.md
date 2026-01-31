@@ -1,4 +1,4 @@
-<h1> multiqc </h1>h
+<h1> multiqc </h1>
 <p></p>multiqc.py enables NGS file analysis (i.e. fastqc and multiqc) in python environment for windows client.</p>
 
 <p>To install follow the Windows + WSL setup notes (run once):</p>p>
