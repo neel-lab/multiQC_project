@@ -15,7 +15,8 @@ Reboot, open Ubuntu (WSL) terminal, then install STAR and FASTQC:<br />
     <p>--runThreadN 8</p>
 
 MultiQC is run at python terminal to install multiqc:<br />
-<p>pip install multiqc</p>
+pip install multiqc<br />
+<p> </p>
 The function runs fastqc or rna-star in linux/ubuntu environment, and then uses mutiqc to integrate all the results.<br />
 The main function runs multiqc on data files after either fastqc or rna-star analysis:<br />
 The command is : process_sample_groups_from_csv(base_dir, csv_path, output_base_dir, star_index, run_alignment_flag, run_fastqc_flag, threads_fastqc=4,  threads_star=8)<br  />
