@@ -10,10 +10,10 @@
 <p>  sudo apt install rna-star fastqc</p>
 
 <p>(Optional) Build STAR index (example; quote paths with spaces):</p>p>
-<p>  STAR --runMode genomeGenerate \</p>
-    <p>--genomeDir "/mnt/c/Users/neel/Box/My programs/Python/scglyco/data/star_transcriptome_index" \</p>
-    <p>--genomeFastaFiles "/mnt/c/Users/neel/Box/My programs/Python/scglyco/data/gencode_v47_transcripts.fasta" \</p>
-    <p></p>--runThreadN 8</p>
+  STAR --runMode genomeGenerate \<br />
+    --genomeDir "/mnt/c/Users/neel/Box/My programs/Python/scglyco/data/star_transcriptome_index" \<br />
+    --genomeFastaFiles "/mnt/c/Users/neel/Box/My programs/Python/scglyco/data/gencode_v47_transcripts.fasta" \<br />
+    --runThreadN 8<br />
 
 <p>MultiQC is run at python terminal to install multiqc:</p>
 <p>  </p>pip install multiqc</p>
@@ -23,10 +23,10 @@
 <p>The command is : process_sample_groups_from_csv(base_dir, csv_path, output_base_dir, star_index, run_alignment_flag, run_fastqc_flag, threads_fastqc=4,  threads_star=8)
 <p>where:</p>
 <b>base_dir</b> is directory with data file<br />
-<b>scv_path</b>b> is input file with file names and a column for grouping<br />
-<b>output_base_dir</b>b> is output directory<br />
-<b>star_index</b>b> contains the genome data from ran-star<br />
-<b>run_alignment_flag</b>b> (T/F) enables alignment with genome using STAR<br />
-<b>run_fastqc_flag (T/F)</b>b> enables fastqc analysis<br />
-<b>threads_fastqc</b>b> specifies number of cores used for fastqc analysis<br />
-<b>treads_star</b>b> is number of processors used for rna-star alignment.<br />
+<b>scv_path</b> is input file with file names and a column for grouping<br />
+<b>output_base_dir</b> is output directory<br />
+<b>star_index</b> contains the genome data from ran-star<br />
+<b>run_alignment_flag</b> (T/F) enables alignment with genome using STAR<br />
+<b>run_fastqc_flag (T/F)</b> enables fastqc analysis<br />
+<b>threads_fastqc</b> specifies number of cores used for fastqc analysis<br />
+<b>treads_star</b> is number of processors used for rna-star alignment.<br />
