@@ -19,10 +19,10 @@
 <p>  </p>pip install multiqc</p>
 <p> </p>
 <p></p>The function runs fastqc or rna-star in linux/ubuntu environment, and then uses mutiqc to integrate all the results.</p>
-<p></p>The main function runs multiqc on data files after either fastqc or rna-star analysis:</p>
-<p></p>The command is : process_sample_groups_from_csv(base_dir, csv_path, output_base_dir, star_index, run_alignment_flag, run_fastqc_flag, threads_fastqc=4,  threads_star=8)
-<p>where:</p>p>
-<p> base_dir is directory with data file</p>p>
+<p>The main function runs multiqc on data files after either fastqc or rna-star analysis:</p>
+<p>The command is : process_sample_groups_from_csv(base_dir, csv_path, output_base_dir, star_index, run_alignment_flag, run_fastqc_flag, threads_fastqc=4,  threads_star=8)
+<p>where:</p>
+base_dir is directory with data file
 <p> scv_path is input file with file names and a column for grouping</p>
 <p> output_base_dir is output directory</p>
 <p> star_index contais the genome data from ran-star</p>
