@@ -22,11 +22,11 @@
 <p>The main function runs multiqc on data files after either fastqc or rna-star analysis:</p>
 <p>The command is : process_sample_groups_from_csv(base_dir, csv_path, output_base_dir, star_index, run_alignment_flag, run_fastqc_flag, threads_fastqc=4,  threads_star=8)
 <p>where:</p>
-<b>base_dir</b> is directory with data file
-<b>scv_path</b>b> is input file with file names and a column for grouping
-<b>output_base_dir</b>b> is output directory
-<b>star_index</b>b> contains the genome data from ran-star
-<b>run_alignment_flag</b>b> (T/F) enables alignment with genome using STAR
-<b>run_fastqc_flag (T/F)</b>b> enables fastqc analysis
-<b>threads_fastqc</b>b> specifies number of cores used for fastqc analysis
-<b>treads_star</b>b> is number of processors used for rna-star alignment.
+<b>base_dir</b> is directory with data file<br />
+<b>scv_path</b>b> is input file with file names and a column for grouping<br />
+<b>output_base_dir</b>b> is output directory<br />
+<b>star_index</b>b> contains the genome data from ran-star<br />
+<b>run_alignment_flag</b>b> (T/F) enables alignment with genome using STAR<br />
+<b>run_fastqc_flag (T/F)</b>b> enables fastqc analysis<br />
+<b>threads_fastqc</b>b> specifies number of cores used for fastqc analysis<br />
+<b>treads_star</b>b> is number of processors used for rna-star alignment.<br />
