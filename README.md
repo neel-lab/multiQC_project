@@ -4,7 +4,7 @@ To install follow the Windows + WSL setup notes (run once):<br />
 In Windows CMD (Admin), install wsl at Power Shell prompt:<br />
    wsl --install<br />
    <p>Install Ubuntu, from “Microsoft Store” in start menu. Just look for ubuntu, rather than any specific version.</p>
-Reboot, open Ubuntu (WSL) terminal, then install STAR and FASTQC:br />
+Reboot, open Ubuntu (WSL) terminal, then install STAR and FASTQC:<br />
   sudo apt update<br />
   sudo apt install rna-star fastqc<br />
 <p> </p>
