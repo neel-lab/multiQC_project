@@ -1,5 +1,5 @@
 <h1> multiqc </h1>
-<p></p>multiqc.py enables NGS file analysis (i.e. fastqc and multiqc) in python environment for windows client.</p>
+<p><b>multiqc.py enables NGS file analysis (i.e. fastqc and multiqc) in python environment for windows client.</p></b>
 To install follow the Windows + WSL setup notes (run once):<br />
 In Windows CMD (Admin), install wsl at Power Shell prompt:<br />
    wsl --install<br />
