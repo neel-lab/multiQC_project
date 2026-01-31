@@ -1,9 +1,12 @@
 """
-Windows + WSL setup notes (run once):
+This program enables multiqc analysis using the python environment for windows client.
 
-In Windows CMD (Admin):
+To install follow the Windows + WSL setup notes (run once):
+In Windows CMD (Admin), install wsl at Power Shell prompt:
   wsl --install
-Reboot, open Ubuntu (WSL) terminal, then:
+  Install Ubuntu, from “Microsoft Store” in start menu. Just look for ubuntu, rather than any specific version.
+
+Reboot, open Ubuntu (WSL) terminal, then install STAR and FASTQC:
   sudo apt update
   sudo apt install rna-star fastqc
 
@@ -13,15 +16,29 @@ Reboot, open Ubuntu (WSL) terminal, then:
     --genomeFastaFiles "/mnt/c/Users/neel/Box/My programs/Python/scglyco/data/gencode_v47_transcripts.fasta" \
     --runThreadN 8
 
-MultiQC is run on Windows:
+MultiQC is run at python terminal to install multiqc:
   pip install multiqc
-"""
 
+The function runs fastqc or rna-star in linux/ubuntu environment, and then uses mutiqc to integrate all the results.
+
+The main function runs multiqc on data files after either fastqc or rna-star analysis:
+The command is : process_sample_groups_from_csv(base_dir, csv_path, output_base_dir, star_index,
+run_alignment_flag, run_fastqc_flag, threads_fastqc=4,  threads_star=8)
+ where:
+ base_dir is directory with data file
+ scv_path is input file with file names and a column for grouping
+ output_base_dir is output directory
+ star_index contais the genome data from ran-star
+ run_alignment_flag (T/F) enables alignment with genome using STAR
+ run_fastqc_flag (T/F) enables fastqc analysis
+ threads_fastqc specifies number of cores used for fastqc analysis
+ treads_star is number of processors used for rna-star alignment.
+
+"""
 import os, time
 import posixpath
 import subprocess
 from pathlib import PureWindowsPath
-
 import pandas as pd
 
 
@@ -81,8 +98,7 @@ def run_alignment(sample_fastq_r1, sample_fastq_r2, output_dir, star_index, samp
     # IMPORTANT: use POSIX join for WSL paths (avoid Windows backslashes)
     star_out_prefix_wsl = posixpath.join(output_dir_wsl, sample_name + "_")
 
-    cmd = [
-        "wsl", "-e", "STAR",
+    cmd = ["wsl", "-e", "STAR",
         "--runThreadN", str(threads),
         "--genomeDir", star_index_wsl,
         "--readFilesIn", r1_wsl, r2_wsl,
@@ -91,8 +107,7 @@ def run_alignment(sample_fastq_r1, sample_fastq_r2, output_dir, star_index, samp
         "--outSAMtype", "BAM", "SortedByCoordinate",
         "--outSAMunmapped", "Within",
         "--outFilterMultimapNmax", "1",
-        "--outReadsUnmapped", "Fastx",
-    ]
+        "--outReadsUnmapped", "Fastx"]
 
     print(f"Running STAR alignment for {sample_name}...")
     result = subprocess.run(cmd, capture_output=True, text=True)
@@ -107,10 +122,6 @@ def run_alignment(sample_fastq_r1, sample_fastq_r2, output_dir, star_index, samp
 
     return os.path.join(output_dir, sample_name + "_Log.final.out")
 
-
-import time
-import posixpath
-import subprocess
 
 def run_fastqc_to_wsl_then_copy(r1_wsl, r2_wsl, win_fastqc_output_dir, threads=4, wsl_root="~/fastqc_runs"):
     """
@@ -281,8 +292,7 @@ def process_sample_groups_from_csv(base_dir, csv_path, output_base_dir, star_ind
             if run_alignment_flag:
                 align_out_dir = os.path.join(sample_output_dir, "star_alignment")
                 log_file = run_alignment(
-                    r1, r2, align_out_dir, star_index, sample_name, threads=threads_star
-                )
+                    r1, r2, align_out_dir, star_index, sample_name, threads=threads_star)
                 if os.path.exists(log_file):
                     files_to_analyze.append(log_file)
                 else:
