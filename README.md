@@ -12,15 +12,14 @@ Reboot, open Ubuntu (WSL) terminal, then install STAR and FASTQC:br />
   STAR --runMode genomeGenerate \<br />
     --genomeDir "/mnt/c/Users/neel/Box/My programs/Python/scglyco/data/star_transcriptome_index" \<br />
     --genomeFastaFiles "/mnt/c/Users/neel/Box/My programs/Python/scglyco/data/gencode_v47_transcripts.fasta" \<br />
-    --runThreadN 8<br />
+    <p>--runThreadN 8</p>
 
-<p>MultiQC is run at python terminal to install multiqc:</p>
-<p>  </p>pip install multiqc</p>
-<p> </p>
-<p></p>The function runs fastqc or rna-star in linux/ubuntu environment, and then uses mutiqc to integrate all the results.</p>
-<p>The main function runs multiqc on data files after either fastqc or rna-star analysis:</p>
-<p>The command is : process_sample_groups_from_csv(base_dir, csv_path, output_base_dir, star_index, run_alignment_flag, run_fastqc_flag, threads_fastqc=4,  threads_star=8)
-<p>where:</p>
+MultiQC is run at python terminal to install multiqc:<br />
+<p>pip install multiqc</p>
+The function runs fastqc or rna-star in linux/ubuntu environment, and then uses mutiqc to integrate all the results.<br />
+he main function runs multiqc on data files after either fastqc or rna-star analysis:<br />
+The command is : process_sample_groups_from_csv(base_dir, csv_path, output_base_dir, star_index, run_alignment_flag, run_fastqc_flag, threads_fastqc=4,  threads_star=8)<br  />
+where:<br />
 <b>base_dir</b> is directory with data file<br />
 <b>scv_path</b> is input file with file names and a column for grouping<br />
 <b>output_base_dir</b> is output directory<br />
