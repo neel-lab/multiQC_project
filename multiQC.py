@@ -41,6 +41,7 @@ import subprocess
 from pathlib import PureWindowsPath
 import pandas as pd
 
+multiqc_exe = r"C:\Users\neel\AppData\Roaming\Python\Python39\Scripts\multiqc.exe"
 
 def win_to_wsl_path(win_path: str) -> str:
     """
@@ -204,9 +205,13 @@ def parse_star_log(log_path):
 def run_multiqc_on_group(files_to_analyze, output_dir):
     """Run MultiQC on a list of files/directories (Windows)."""
     os.makedirs(output_dir, exist_ok=True)
-    cmd = ["multiqc", "-v -o", output_dir] + files_to_analyze       # -v is verbose
+
+    cmd = [multiqc_exe, "-v", "-o", output_dir] + files_to_analyze
     print(f"Running MultiQC: {' '.join(cmd)}")
-    result = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace")
+
+    result = subprocess.run(cmd, capture_output=True, text=True,
+                            encoding="utf-8", errors="replace")
+
     if result.returncode != 0:
         print("MultiQC stderr:\n" + (result.stderr or "").strip())
         print("MultiQC stdout:\n" + (result.stdout or "").strip())
@@ -270,17 +275,16 @@ def process_sample_groups_from_csv(base_dir, csv_path, output_base_dir, star_ind
             # FastQC (WSL) if requested
             # -------------------------
             if run_fastqc_flag:
-                fastqc_output_dir = os.path.join(sample_output_dir, "fastqc_output")
-                os.makedirs(fastqc_output_dir, exist_ok=True)
-                run_fastqc_to_wsl_then_copy(r1_wsl, r2_wsl, fastqc_output_dir, threads=threads_fastqc)
 
-                files_to_analyze.append(fastqc_output_dir)
+                run_fastqc_to_wsl_then_copy(r1_wsl, r2_wsl, sample_output_dir, threads=threads_fastqc)
+
+                files_to_analyze.append(sample_output_dir)
 
                 # Check that file is written correctly
                 r1_base = fastqc_expected_basename(r1)
                 r2_base = fastqc_expected_basename(r2)
-                expected1 = os.path.join(fastqc_output_dir, r1_base + "_fastqc.zip")
-                expected2 = os.path.join(fastqc_output_dir, r2_base + "_fastqc.zip")
+                expected1 = os.path.join(sample_output_dir, r1_base + "_fastqc.zip")
+                expected2 = os.path.join(sample_output_dir, r2_base + "_fastqc.zip")
                 if not os.path.exists(expected1):
                     print(f"  Warning: expected FastQC output not found: {expected1}")
                 if not os.path.exists(expected2):
@@ -307,9 +311,9 @@ def process_sample_groups_from_csv(base_dir, csv_path, output_base_dir, star_ind
 
 
 if __name__ == "__main__":
-    base_dir = r"D:\human_genome\SR010180"
-    csv_path = "Samplemap2_consolidated.csv"
-    output_base_dir = r"D:\human_genome\SR010180\pipeline_output"
+    base_dir = r"D:\junk\NGS_Data\Novogene_Davis_032326"
+    csv_path = "filename.csv"
+    output_base_dir = r"D:\junk\NGS_Data\Novogene_Davis_032326\multiQC_output"
     star_index = r"D:\human_genome\data\star_transcriptome_index"
 
     # Set flags for what you want to run
