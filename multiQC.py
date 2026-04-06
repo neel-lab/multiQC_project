@@ -306,7 +306,7 @@ def process_sample_groups_from_csv(base_dir, csv_path, output_base_dir, star_ind
             print(f"No files to analyze for group {i}. Skipping MultiQC.")
             continue
 
-        multiqc_out_dir = os.path.join(output_base_dir, f"group_{i}_{group}", "multiqc_report")
+        multiqc_out_dir = os.path.join(output_base_dir, "multiqc_report")
         run_multiqc_on_group(files_to_analyze, multiqc_out_dir)
 
 
